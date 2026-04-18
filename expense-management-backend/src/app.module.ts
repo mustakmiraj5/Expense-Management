@@ -6,6 +6,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import envConfig from './config/env.config';
 import { LoggingMiddleware } from './middlewares/logging.middleware';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { CategoriesModule } from './categories/categories.module';
+import { ExpensesModule } from './expenses/expenses.module';
+import { IncomesModule } from './incomes/incomes.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -30,6 +36,12 @@ import { LoggingMiddleware } from './middlewares/logging.middleware';
       global: true,
       inject: [ConfigService],
     }),
+    AuthModule,
+    UsersModule,
+    CategoriesModule,
+    ExpensesModule,
+    IncomesModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService, Logger],

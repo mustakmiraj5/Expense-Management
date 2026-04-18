@@ -72,6 +72,32 @@ const errors: Record<string, ErrorConfig> = {
     error: 'RESOURCE_CONFLICT',
   },
 
+  // Income
+  incomeNotFound: {
+    statusCode: HttpStatus.NOT_FOUND,
+    message: 'Income not found',
+    error: 'INCOME_NOT_FOUND',
+  },
+
+  // Category
+  categoryNotFound: {
+    statusCode: HttpStatus.NOT_FOUND,
+    message: 'Category not found',
+    error: 'CATEGORY_NOT_FOUND',
+  },
+  categoryInUse: {
+    statusCode: HttpStatus.CONFLICT,
+    message: 'Category is in use by existing expenses',
+    error: 'CATEGORY_IN_USE',
+  },
+
+  // Password
+  invalidPassword: {
+    statusCode: HttpStatus.BAD_REQUEST,
+    message: 'Current password is incorrect',
+    error: 'INVALID_PASSWORD',
+  },
+
   // Server
   internalServerError: {
     statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
