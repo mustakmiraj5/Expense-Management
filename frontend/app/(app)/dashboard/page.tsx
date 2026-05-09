@@ -3,7 +3,8 @@ import { StatCard } from '@/app/components/dashboard/StatCard';
 import { SavingsSummary } from '@/app/components/dashboard/SavingsSummary';
 import { CategoryPieChart } from '@/app/components/dashboard/CategoryPieChart';
 import { MonthlyTrendChart } from '@/app/components/dashboard/MonthlyTrendChart';
-import type { DashboardStats } from '@/app/lib/types';
+import { LoansOverviewCard } from '@/app/components/dashboard/LoansOverviewCard';
+import type { DashboardStats, LoansSummary } from '@/app/lib/types';
 
 async function getStats(): Promise<DashboardStats | null> {
   try {
@@ -16,8 +17,19 @@ async function getStats(): Promise<DashboardStats | null> {
   }
 }
 
+async function getLoansSummary(): Promise<LoansSummary | null> {
+  try {
+    const res = await serverFetch('/loans/summary', { next: { revalidate: 60 } } as any);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.data ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export default async function DashboardPage() {
-  const stats = await getStats();
+  const [stats, loansSummary] = await Promise.all([getStats(), getLoansSummary()]);
 
   if (!stats) {
     return (
@@ -38,6 +50,9 @@ export default async function DashboardPage() {
         <StatCard title="This Month" amount={stats.totals.monthly} icon="🗓️" colorClass="bg-orange-50" />
         <StatCard title="This Year" amount={stats.totals.yearly} icon="📈" colorClass="bg-green-50" />
       </div>
+
+      {/* Loans overview */}
+      {loansSummary && <LoansOverviewCard summary={loansSummary} />}
 
       {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

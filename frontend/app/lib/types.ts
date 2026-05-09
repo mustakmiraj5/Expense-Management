@@ -38,6 +38,56 @@ export interface Income {
   createdAt: string;
 }
 
+export type LoanDirection = 'LENT' | 'BORROWED';
+export type LoanStatus = 'OPEN' | 'SETTLED';
+
+export interface Contact {
+  id: number;
+  name: string;
+  phone?: string | null;
+  note?: string | null;
+  userId: number;
+  createdAt?: string;
+  updatedAt?: string;
+  _count?: { loans: number };
+}
+
+export interface Repayment {
+  id: number;
+  loanId: number;
+  amount: string;
+  date: string;
+  note?: string | null;
+  userId: number;
+  createdAt: string;
+}
+
+export interface Loan {
+  id: number;
+  direction: LoanDirection;
+  principal: string;
+  date: string;
+  dueDate?: string | null;
+  description?: string | null;
+  status: LoanStatus;
+  userId: number;
+  contactId: number;
+  contact: Pick<Contact, 'id' | 'name' | 'phone'>;
+  repayments?: Repayment[];
+  outstanding: string;
+  repaid: string;
+  isOverdue: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface LoansSummary {
+  totalReceivable: string;
+  totalPayable: string;
+  openCount: number;
+  overdueCount: number;
+}
+
 export interface PaginatedResponse<T> {
   data: T[];
   meta: { total: number; page: number; limit: number; totalPages: number };

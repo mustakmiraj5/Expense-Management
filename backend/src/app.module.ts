@@ -12,6 +12,8 @@ import { CategoriesModule } from './categories/categories.module';
 import { ExpensesModule } from './expenses/expenses.module';
 import { IncomesModule } from './incomes/incomes.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ContactsModule } from './contacts/contacts.module';
+import { LoansModule } from './loans/loans.module';
 
 @Module({
   imports: [
@@ -42,6 +44,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ExpensesModule,
     IncomesModule,
     DashboardModule,
+    ContactsModule,
+    LoansModule,
   ],
   controllers: [AppController],
   providers: [AppService, Logger],

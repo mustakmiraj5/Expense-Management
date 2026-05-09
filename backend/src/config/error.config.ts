@@ -91,6 +91,35 @@ const errors: Record<string, ErrorConfig> = {
     error: 'CATEGORY_IN_USE',
   },
 
+  // Contacts
+  contactNotFound: {
+    statusCode: HttpStatus.NOT_FOUND,
+    message: 'Contact not found',
+    error: 'CONTACT_NOT_FOUND',
+  },
+  contactInUse: {
+    statusCode: HttpStatus.CONFLICT,
+    message: 'Contact is in use by existing loans',
+    error: 'CONTACT_IN_USE',
+  },
+
+  // Loans
+  loanNotFound: {
+    statusCode: HttpStatus.NOT_FOUND,
+    message: 'Loan not found',
+    error: 'LOAN_NOT_FOUND',
+  },
+  repaymentNotFound: {
+    statusCode: HttpStatus.NOT_FOUND,
+    message: 'Repayment not found',
+    error: 'REPAYMENT_NOT_FOUND',
+  },
+  repaymentExceedsPrincipal: {
+    statusCode: HttpStatus.BAD_REQUEST,
+    message: 'Repayment exceeds outstanding principal',
+    error: 'REPAYMENT_EXCEEDS_PRINCIPAL',
+  },
+
   // Password
   invalidPassword: {
     statusCode: HttpStatus.BAD_REQUEST,
