@@ -120,6 +120,13 @@ const errors: Record<string, ErrorConfig> = {
     error: 'REPAYMENT_EXCEEDS_PRINCIPAL',
   },
 
+  // Reports
+  invalidMonthFormat: {
+    statusCode: HttpStatus.BAD_REQUEST,
+    message: 'Month must be in YYYY-MM format',
+    error: 'INVALID_MONTH_FORMAT',
+  },
+
   // Password
   invalidPassword: {
     statusCode: HttpStatus.BAD_REQUEST,

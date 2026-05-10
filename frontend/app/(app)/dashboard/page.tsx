@@ -4,6 +4,7 @@ import { SavingsSummary } from '@/app/components/dashboard/SavingsSummary';
 import { CategoryPieChart } from '@/app/components/dashboard/CategoryPieChart';
 import { MonthlyTrendChart } from '@/app/components/dashboard/MonthlyTrendChart';
 import { LoansOverviewCard } from '@/app/components/dashboard/LoansOverviewCard';
+import { MonthlyReportButton } from '@/app/components/dashboard/MonthlyReportButton';
 import type { DashboardStats, LoansSummary } from '@/app/lib/types';
 
 async function getStats(): Promise<DashboardStats | null> {
@@ -41,7 +42,10 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <MonthlyReportButton />
+      </div>
 
       {/* Totals */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

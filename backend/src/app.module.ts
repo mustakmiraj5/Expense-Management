@@ -14,6 +14,7 @@ import { IncomesModule } from './incomes/incomes.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { LoansModule } from './loans/loans.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { LoansModule } from './loans/loans.module';
     DashboardModule,
     ContactsModule,
     LoansModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService, Logger],
